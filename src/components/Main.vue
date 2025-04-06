@@ -1,7 +1,9 @@
 <template>
   <section class="main">
     <SearchBar v-model:games="games" />
-    <GameList :games="games" />
+    <!-- <GameList :games="games" v-model:videos="videos" /> -->
+    <GameList v-model:games="games" v-model:videos="videos" />
+    <VideoList :videos="videos" />
   </section>
 </template>
 
@@ -9,8 +11,10 @@
 import { ref } from "vue";
 import SearchBar from "./SearchBar.vue";
 import GameList from "./GameList.vue";
+import VideoList from "./VideoList.vue";
 
 const games = ref([]);
+const videos = ref([]);
 </script>
 
 <style>

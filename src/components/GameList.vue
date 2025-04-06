@@ -1,16 +1,19 @@
 <template>
   <div class="game-list-container">
-    <div v-if="games.length === 0">
-      <p>Aucun jeu trouvé. Essayez une autre recherche.</p>
-    </div>
-    <div v-else class="game-list">
-      <Game v-for="game in games" :key="game.id" :game="game" />
+    <div class="game-list">
+      <Game
+        v-for="game in games"
+        :key="game.id"
+        :game="game"
+        @update:videos="$emit('update:videos', $event)"
+        @update:games="$emit('update:games', $event)"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, defineEmits } from "vue";
 import Game from "./Game.vue";
 
 interface GameItem {
@@ -18,14 +21,24 @@ interface GameItem {
   name: string;
   box_art_url: string;
 }
+interface VideoItem {
+  id: string;
+  title: string;
+  created_at: string;
+  url: string;
+  thumbnail_url: string;
+}
 
-const props = defineProps({
+defineProps({
   games: {
     type: Array as () => GameItem[],
     default: () => [],
   },
+  videos: {
+    type: Array as () => VideoItem[],
+    default: () => [],
+  },
 });
 
-console.log(props.games);
-console.log("**************************");
+defineEmits(["update:videos", "update:games"]);
 </script>

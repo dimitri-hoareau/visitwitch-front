@@ -1,18 +1,37 @@
 <template>
-  <div class="game-item">
+  <div class="game-item" @click="searchVideo">
     <img :src="game.box_art_url" :alt="game.name" class="game-image" />
-    <div class="game-info">
-      <h3>{{ game.name }}</h3>
-      <p class="game-id">ID: {{ game.id }}</p>
-    </div>
+    <h3>{{ game.name }}</h3>
   </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
+const emit = defineEmits(["update:videos", "update:games"]);
+const props = defineProps({
   game: {
     type: Object,
     required: true,
   },
 });
+
+const searchVideo = async () => {
+  try {
+    const response = await fetch(
+      `http://localhost:8000/twitch-videos/${encodeURIComponent(props.game.id)}`
+    );
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+    const result = await response.json();
+    console.log(result.data);
+    emit("update:videos", result.data);
+
+    if (result.data && result.data.length > 0) {
+      emit("update:games", []);
+    }
+  } catch (err) {
+    console.error("Error searching for game:", err);
+    emit("update:videos", []);
+  }
+};
 </script>
