@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
+const emit = defineEmits(["update:games"]);
 const gameName = ref("");
-const games = ref([]);
 
 const searchGame = async () => {
   try {
@@ -20,14 +20,12 @@ const searchGame = async () => {
       throw new Error(`API error: ${response.status}`);
     }
 
-    const data = await response.json();
-    games.value = data;
-    console.log(data);
-
-    console.log(`Found ${data.length} games for: ${gameName.value}`);
+    const result = await response.json();
+    // console.log(result.data);
+    emit("update:games", result.data);
   } catch (err) {
     console.error("Error searching for game:", err);
-    games.value = [];
+    emit("update:games", []);
   }
 };
 </script>
