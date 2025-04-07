@@ -37,7 +37,7 @@ const searchVideo = async () => {
   }
 };
 
-setInterval(searchVideo, 120000);
+//setInterval(searchVideo, 120000);
 </script>
 
 <style scoped>

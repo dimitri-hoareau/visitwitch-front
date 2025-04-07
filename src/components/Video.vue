@@ -15,8 +15,28 @@ const props = defineProps({
   },
 });
 
-const goToVideo = () => {
+const goToVideo = async () => {
   window.open(props.video.url, "_blank");
+
+  try {
+    const response = await fetch("http://localhost:8000/watched-videos", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        video_id: props.video.id,
+        title: props.video.title,
+        url: props.video.url,
+        thumbnail_url: props.video.thumbnail_url,
+      }),
+    });
+
+    const result = await response.json();
+    console.log("Video recorded:", result);
+  } catch (error) {
+    console.error("Error :", error);
+  }
 };
 </script>
 
