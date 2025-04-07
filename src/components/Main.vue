@@ -1,7 +1,6 @@
 <template>
   <section class="main">
-    <SearchBar v-model:games="games" />
-    <!-- <GameList :games="games" v-model:videos="videos" /> -->
+    <SearchBar v-model:games="games" v-model:videos="videos" />
     <GameList v-model:games="games" v-model:videos="videos" />
     <VideoList :videos="videos" />
   </section>

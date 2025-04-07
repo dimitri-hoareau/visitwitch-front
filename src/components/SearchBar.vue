@@ -7,10 +7,11 @@
 
 <script setup lang="ts">
 import { ref, defineEmits } from "vue";
-const emit = defineEmits(["update:games"]);
+const emit = defineEmits(["update:videos", "update:games"]);
 const gameName = ref("");
 
 const searchGame = async () => {
+  emit("update:videos", []);
   try {
     const response = await fetch(
       `http://localhost:8000/twitch-games/${encodeURIComponent(
@@ -24,6 +25,7 @@ const searchGame = async () => {
 
     const result = await response.json();
     emit("update:games", result.data);
+    gameName.value = "";
   } catch (err) {
     console.error("Error searching for game:", err);
     emit("update:games", []);
