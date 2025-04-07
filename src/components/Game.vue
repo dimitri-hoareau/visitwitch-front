@@ -36,6 +36,8 @@ const searchVideo = async () => {
     emit("update:videos", []);
   }
 };
+
+setInterval(searchVideo, 120000);
 </script>
 
 <style scoped>
