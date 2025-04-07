@@ -17,7 +17,9 @@ const props = defineProps({
 const searchVideo = async () => {
   try {
     const response = await fetch(
-      `http://localhost:8000/twitch-videos/${encodeURIComponent(props.game.id)}`
+      `http://localhost:8000/twitch-videos/${encodeURIComponent(
+        props.game.id
+      )}?max_results=true`
     );
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`);
@@ -35,3 +37,14 @@ const searchVideo = async () => {
   }
 };
 </script>
+
+<style scoped>
+.game-item {
+  padding: 1rem;
+  border: 1px solid black;
+  text-align: center;
+  width: 150px;
+  height: 250px;
+  cursor: pointer;
+}
+</style>

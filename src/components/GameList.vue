@@ -1,14 +1,12 @@
 <template>
-  <div class="game-list-container">
-    <div class="game-list">
-      <Game
-        v-for="game in games"
-        :key="game.id"
-        :game="game"
-        @update:videos="$emit('update:videos', $event)"
-        @update:games="$emit('update:games', $event)"
-      />
-    </div>
+  <div class="game-list">
+    <Game
+      v-for="game in games"
+      :key="game.id"
+      :game="game"
+      @update:videos="$emit('update:videos', $event)"
+      @update:games="$emit('update:games', $event)"
+    />
   </div>
 </template>
 
@@ -42,3 +40,13 @@ defineProps({
 
 defineEmits(["update:videos", "update:games"]);
 </script>
+
+<style scoped>
+.game-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+</style>

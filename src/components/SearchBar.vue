@@ -13,7 +13,9 @@ const gameName = ref("");
 const searchGame = async () => {
   try {
     const response = await fetch(
-      `http://localhost:8000/twitch-games/${encodeURIComponent(gameName.value)}`
+      `http://localhost:8000/twitch-games/${encodeURIComponent(
+        gameName.value
+      )}?max_results=true`
     );
 
     if (!response.ok) {
@@ -21,7 +23,6 @@ const searchGame = async () => {
     }
 
     const result = await response.json();
-    // console.log(result.data);
     emit("update:games", result.data);
   } catch (err) {
     console.error("Error searching for game:", err);

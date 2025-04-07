@@ -1,8 +1,6 @@
 <template>
-  <div class="video-list-container">
-    <div class="video-list">
-      <Video v-for="video in videos" :key="video.id" :video="video" />
-    </div>
+  <div class="video-list">
+    <Video v-for="video in videos" :key="video.id" :video="video" />
   </div>
 </template>
 
@@ -25,3 +23,13 @@ defineProps({
   },
 });
 </script>
+
+<style scoped>
+.video-list {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+</style>
