@@ -2,7 +2,7 @@
   <div class="video-item">
     <img :src="video.thumbnail_url" :alt="video.title" class="video-image" />
     <h3>{{ video.title }}</h3>
-    <p>{{ video.created_at }}</p>
+    <p>{{ formatDate(video.created_at) }}</p>
     <button @click="goToVideo" class="video-button">Voir la vidéo</button>
   </div>
 </template>
@@ -14,6 +14,9 @@ const props = defineProps({
     required: true,
   },
 });
+const formatDate = (dateString: string) => {
+  return new Date(dateString).toLocaleString("fr-FR");
+};
 
 const goToVideo = async () => {
   window.open(props.video.url, "_blank");
