@@ -45,13 +45,16 @@ const goToVideo = async () => {
 
 <style scoped>
 .video-item {
-  padding: 1rem;
+  padding: 2rem;
   border: 1px solid black;
   text-align: center;
-  cursor: pointer;
   margin: 1rem;
   width: 400px;
   height: 450px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  border-radius: 1rem;
 }
 
 .video-button {
@@ -73,5 +76,12 @@ const goToVideo = async () => {
   width: 100%;
   height: auto;
   object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+img,
+h3,
+p {
+  margin-bottom: 1rem;
 }
 </style>

@@ -33,4 +33,24 @@ const searchGame = async () => {
 };
 </script>
 
-<style></style>
+<style scoped>
+form {
+  margin: 1rem;
+  text-align: center;
+}
+input {
+  width: 60%;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid #e5e5e5;
+}
+
+button {
+  background-color: #5c16c5;
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+</style>

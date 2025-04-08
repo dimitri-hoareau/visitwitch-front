@@ -42,11 +42,22 @@ const searchVideo = async () => {
 
 <style scoped>
 .game-item {
+  display: flex;
+  gap: 1rem;
+  background-color: #fff;
   padding: 1rem;
-  border: 1px solid black;
+  border: 1px solid #e5e5e5;
   text-align: center;
-  width: 150px;
-  height: 250px;
+  width: 400px;
+  height: 100px;
   cursor: pointer;
+  border-radius: 1rem;
+}
+
+h3 {
+  margin-top: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 </style>

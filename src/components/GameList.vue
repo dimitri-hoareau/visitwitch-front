@@ -43,6 +43,7 @@ defineEmits(["update:videos", "update:games"]);
 
 <style scoped>
 .game-list {
+  margin-top: 1rem;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
